@@ -1,21 +1,21 @@
 import React from "react";
-import { SafeAreaView, StyleSheet, Text } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { FontConst } from "./assets";
-import { CIcon, IconType } from "./components";
-import { useAppState } from "./hooks";
+import { Container } from "./components";
+import ShakeText from "./components/ShakerText";
+import RNBounceable from "./components/RNBounceable";
+
 
 const App = () => {
-  const a = useAppState()
-  console.log("App==>", a)
-
   return (
-    <SafeAreaView>
-      <Text style={{
-        fontFamily: FontConst.Handlee.regular
-      }}>App</Text>
-      <CIcon name="profile" type={IconType.AntDesign} size={50} color="red" />
+    <Container >
 
-    </SafeAreaView>
+      <ShakeText>
+        Hellooooooooo
+      </ShakeText>
+
+
+    </Container>
   );
 };
 

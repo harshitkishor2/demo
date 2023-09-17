@@ -6,6 +6,7 @@ import useIsFirstRender from "./useIsFirstRender"
 import useIsMounted from "./useIsMounted"
 import useKeyboard from "./useKeyboard"
 import useOrientation from "./useOrientation"
+import useStatusBar from "./useStatusBar"
 
 
 export {
@@ -16,5 +17,6 @@ export {
     useKeyboard,
     useDebounce,
     useIsFirstRender,
-    useIsMounted
+    useIsMounted,
+    useStatusBar
 }

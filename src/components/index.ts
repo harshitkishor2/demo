@@ -1,6 +1,10 @@
 import CFastImage from "./CFastImage"
 import CIcon, { IconType } from "./CIcon"
 import CImage from "./CImage"
+import CText from "./CText"
+import Container from "./Container"
+import Skeleton from "./Skeleton"
+import Spacer from "./Spacer"
 
 
 
@@ -8,5 +12,9 @@ export {
     CIcon,
     CImage,
     CFastImage,
-    IconType
+    IconType,
+    Spacer,
+    Container,
+    CText,
+    Skeleton
 }

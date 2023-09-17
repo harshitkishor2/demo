@@ -2,13 +2,15 @@ import React from "react";
 import { StyleProp, StyleSheet } from "react-native";
 import FastImage, { FastImageProps, ImageStyle } from "react-native-fast-image";
 import { ImageConst } from "../assets";
+import Skeleton from "./Skeleton";
 
 interface CFastImageProps extends FastImageProps {
     source: FastImageProps['source'];
     style?: StyleProp<ImageStyle>;
     size?: number
     height?: number
-    width?: number
+    width?: number,
+    loading: boolean
 }
 const CFastImage = ({
     source,
@@ -16,8 +18,19 @@ const CFastImage = ({
     size,
     height,
     width,
+    loading,
     ...rest
 }: CFastImageProps) => {
+
+    if (loading) {
+        return <Skeleton
+            height={height ?? size}
+            width={width ?? size}
+            borderRadius={size ? size / 2 : 10}
+        />
+    }
+
+
     return (
         <FastImage
             defaultSource={ImageConst.PERSON}
@@ -41,6 +54,7 @@ export default CFastImage;
 
 CFastImage.defaultProps = {
     size: 50,
+    loading: false,
 };
 
 {/* 

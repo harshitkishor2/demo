@@ -1,10 +1,10 @@
-###### For Readme.md Editor
+### For Readme.md Editor
 https://pandao.github.io/editor.md/en.html
 
-##### Step:1 Initiate project
+###  Initiate project
 Create project and folder structure then update package.json file with necessory  scripts
 
-##### Step:2 - Add Custom Fonts And Vector Icons
+### - Add Custom Fonts And Vector Icons
 ```javascript
 yarn add react-native-vector-icons
 yarn add -D @types/react-native-vector-icons
@@ -37,10 +37,19 @@ then run `npx react-native-asset` for linking custom fonts.
 
 
 
-##### Step:3 - Add Fast Image for custom image component 
+### Add Fast Image for custom image component 
 ```javascript
 yarn add react-native-fast-image
 ```
 **Article** - https://medium.com/@Bigscal-Technologies/how-to-load-images-quickly-with-react-native-faster-image-f7856cb5ebcd
 
 
+### Some Useful dependencies-
+
+```javascript
+yarn add react-native-animatable @react-native-async-storage/async-storage axios moment moment-timezone lodash
+```
+
+```javascript
+yarn add -D @types/lodash
+```
