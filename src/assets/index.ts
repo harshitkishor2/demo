@@ -5,5 +5,5 @@ export const FontConst = {
 }
 
 export const ImageConst = {
-    //  LOGO:"./index.ts"
+    PERSON: require('./images/person.png')
 }

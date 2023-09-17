@@ -1,3 +1,6 @@
+###### For Readme.md Editor
+https://pandao.github.io/editor.md/en.html
+
 ##### Step:1 Initiate project
 Create project and folder structure then update package.json file with necessory  scripts
 
@@ -31,5 +34,13 @@ Add this file in root directory  -` react-native.config.js`
     };
 	
 then run `npx react-native-asset` for linking custom fonts.
+
+
+
+##### Step:3 - Add Fast Image for custom image component 
+```javascript
+yarn add react-native-fast-image
+```
+**Article** - https://medium.com/@Bigscal-Technologies/how-to-load-images-quickly-with-react-native-faster-image-f7856cb5ebcd
 
 

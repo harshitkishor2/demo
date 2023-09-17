@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* myProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* myProjectTests.m */; };
+		04CB2CFB88C24544B3EB58C4 /* Handlee-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6142E8BC7A234E6681FDB048 /* Handlee-Regular.ttf */; };
 		0C80B921A6F3F58F76C31292 /* libPods-myProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-myProject.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -52,7 +53,6 @@
 		756511E12AB6C6F5000F52CC /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 756511BB2AB6C6F5000F52CC /* MaterialIcons.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-myProject-myProjectTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-myProject-myProjectTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		04CB2CFB88C24544B3EB58C4 /* Handlee-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6142E8BC7A234E6681FDB048 /* Handlee-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +80,7 @@
 		5709B34CF0A7D63546082F79 /* Pods-myProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myProject.release.xcconfig"; path = "Target Support Files/Pods-myProject/Pods-myProject.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-myProject-myProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myProject-myProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-myProject-myProjectTests/Pods-myProject-myProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-myProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-myProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6142E8BC7A234E6681FDB048 /* Handlee-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Handlee-Regular.ttf"; path = "../src/assets/fonts/Handlee-Regular.ttf"; sourceTree = "<group>"; };
 		756511A92AB6C6F5000F52CC /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
 		756511AA2AB6C6F5000F52CC /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
 		756511AB2AB6C6F5000F52CC /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
@@ -102,7 +103,6 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = myProject/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-myProject-myProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-myProject-myProjectTests.release.xcconfig"; path = "Target Support Files/Pods-myProject-myProjectTests/Pods-myProject-myProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		6142E8BC7A234E6681FDB048 /* Handlee-Regular.ttf */ = {isa = PBXFileReference; name = "Handlee-Regular.ttf"; path = "../src/assets/fonts/Handlee-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,13 +237,13 @@
 			sourceTree = "<group>";
 		};
 		F578BC609C6B454590F30DD9 /* Resources */ = {
-			isa = "PBXGroup";
+			isa = PBXGroup;
 			children = (
 				6142E8BC7A234E6681FDB048 /* Handlee-Regular.ttf */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
 			path = "";
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
