@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "release": "react-native run-android --mode=release",
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
@@ -19,7 +20,8 @@
     "bundle:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios' --assets-dest ios",
     "apk:debug": "cd android && ./gradlew assembleDebug && cd ..",
     "apk:release": "cd android && ./gradlew assembleRelease && cd ..",
-    "aab:release": "cd android && ./gradlew bundleRelease && cd .."
+    "aab:release": "cd android && ./gradlew bundleRelease && cd ..",
+    "sha": "cd android && ./gradlew signingReport && cd .."
   },
   "dependencies": {
     "react": "18.2.0",
