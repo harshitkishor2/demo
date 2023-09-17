@@ -1,7 +1,9 @@
-import FontConst from "./fonts";
-import ImageConst from "./images";
+export const FontConst = {
+    Handlee: {
+        regular: "Handlee-Regular",
+    },
+}
 
-export {
-    FontConst,
-    ImageConst
+export const ImageConst = {
+    //  LOGO:"./index.ts"
 }
