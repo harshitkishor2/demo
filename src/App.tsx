@@ -1,11 +1,13 @@
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { CFastImage, CIcon, IconType } from "./components";
-import { FontConst, ImageConst } from "./assets";
-import CImage from "./components/CImage";
-import FastImage from "react-native-fast-image";
+import { SafeAreaView, StyleSheet, Text } from "react-native";
+import { FontConst } from "./assets";
+import { CIcon, IconType } from "./components";
+import { useAppState } from "./hooks";
 
 const App = () => {
+  const a = useAppState()
+  console.log("App==>", a)
+
   return (
     <SafeAreaView>
       <Text style={{
