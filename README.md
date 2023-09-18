@@ -1,79 +1,99 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+### 1 For Readme.md Editor
+https://pandao.github.io/editor.md/en.html
 
-# Getting Started
+### 2 Initiate project
+Create project and folder structure then update package.json file with necessory  scripts
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+### 3 - Add Custom Fonts And Vector Icons
+```javascript
+yarn add react-native-vector-icons
+yarn add -D @types/react-native-vector-icons
+```
+Check here for react native vector icon installation guide
+https://github.com/oblador/react-native-vector-icons#installation
 
-## Step 1: Start the Metro Server
+Check here for custom fonts installation
+https://mehrankhandev.medium.com/ultimate-guide-to-use-custom-fonts-in-react-native-77fcdf859cf4
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+Add this file in root directory  -` react-native.config.js`
 
-To start Metro, run the following command from the _root_ of your React Native project:
 
-```bash
-# using npm
-npm start
+    module.exports = {
+        project: {
+            ios: {},
+            android: {}, // grouped into "project"
+        },
+        assets: ["./src/assets/fonts/"], // stays the same
+        dependencies: {
+            'react-native-vector-icons': {
+                platforms: {
+                    ios: null,
+                },
+            },
+        },
+    };
+	
+then run `npx react-native-asset` for linking custom fonts.
 
-# OR using Yarn
-yarn start
+
+
+### 4 Add Fast Image for custom image component 
+```javascript
+yarn add react-native-fast-image
+```
+**Article** - https://medium.com/@Bigscal-Technologies/how-to-load-images-quickly-with-react-native-faster-image-f7856cb5ebcd
+
+
+### 5 Some Useful dependencies-
+
+```javascript
+yarn add react-native-animatable @react-native-async-storage/async-storage axios moment moment-timezone lodash
 ```
 
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+```javascript
+yarn add -D @types/lodash
 ```
 
-### For iOS
+### 6 SVG installation
 
-```bash
-# using npm
-npm run ios
+    yarn add react-native-svg
+    yarn add -D react-native-svg-transformer
 
-# OR using Yarn
-yarn ios
+`Update metro.config.js`
+````javascript
+const { getDefaultConfig } = require("metro-config");
+
+module.exports = (async () => {
+  const {
+    resolver: { sourceExts, assetExts }
+  } = await getDefaultConfig();
+  return {
+    transformer: {
+      babelTransformerPath: require.resolve("react-native-svg-transformer")
+    },
+    resolver: {
+      assetExts: assetExts.filter((ext) => ext !== "svg"),
+      sourceExts: [...sourceExts, "svg"]
+    }
+  };
+})();
+````
+
+If you are using TypeScript, you need to add this to your declarations.d.ts file (create one if you don't have one already):
+```javascript
+declare module "*.svg" {
+  import React from "react";
+  import { SvgProps } from "react-native-svg";
+  const content: React.FC<SvgProps>;
+  export default content;
+}
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+### 7 Optimized Lottie Component
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+    yarn add lottie-react-native
+	
+then run pod install --repo-update if any error with ios
+Use Custom Component For better performance created under component folder.
 
-## Step 3: Modifying your App
 
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.

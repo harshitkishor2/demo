@@ -1,11 +1,19 @@
-import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { StyleSheet, Text } from "react-native";
+import { FontConst, LoginSvg, LottieConst, } from "./assets";
+import { Container, Lottie } from "./components";
+import ShakeText from "./components/ShakerText";
+import RNBounceable from "./components/RNBounceable";
 
 const App = () => {
   return (
-    <View>
-      <Text>App</Text>
-    </View>
+    <Container >
+
+      <ShakeText>
+        Hellooooooooo
+      </ShakeText>
+
+    </Container>
   );
 };
 
