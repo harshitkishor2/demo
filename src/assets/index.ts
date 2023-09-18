@@ -10,6 +10,10 @@ export const ImageConst = {
     PERSON: require('./images/person.png')
 }
 
+export const LottieConst = {
+    CONGRATS: require('./lottie/congrats.json')
+}
+
 export {
     LoginSvg
 }

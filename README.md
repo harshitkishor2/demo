@@ -89,3 +89,11 @@ declare module "*.svg" {
 }
 ```
 
+### 7 Optimized Lottie Component
+
+    yarn add lottie-react-native
+	
+then run pod install --repo-update if any error with ios
+Use Custom Component For better performance created under component folder.
+
+

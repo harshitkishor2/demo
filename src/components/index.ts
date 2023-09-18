@@ -3,6 +3,7 @@ import CIcon, { IconType } from "./CIcon"
 import CImage from "./CImage"
 import CText from "./CText"
 import Container from "./Container"
+import Lottie from "./Lottie"
 import Skeleton from "./Skeleton"
 import Spacer from "./Spacer"
 
@@ -16,5 +17,6 @@ export {
     Spacer,
     Container,
     CText,
-    Skeleton
+    Skeleton,
+    Lottie
 }

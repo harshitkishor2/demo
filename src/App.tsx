@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text } from "react-native";
-import { FontConst, LoginSvg, } from "./assets";
-import { Container } from "./components";
+import { FontConst, LoginSvg, LottieConst, } from "./assets";
+import { Container, Lottie } from "./components";
 import ShakeText from "./components/ShakerText";
 import RNBounceable from "./components/RNBounceable";
 
@@ -12,7 +12,6 @@ const App = () => {
       <ShakeText>
         Hellooooooooo
       </ShakeText>
-
 
     </Container>
   );
