@@ -1,10 +1,10 @@
-### 1 For Readme.md Editor
+### 1. For Readme.md Editor
 https://pandao.github.io/editor.md/en.html
 
-### 2 Initiate project
+### 2. Initiate project
 Create project and folder structure then update package.json file with necessory  scripts
 
-### 3 - Add Custom Fonts And Vector Icons
+### 3. - Add Custom Fonts And Vector Icons
 ```javascript
 yarn add react-native-vector-icons
 yarn add -D @types/react-native-vector-icons
@@ -37,14 +37,14 @@ then run `npx react-native-asset` for linking custom fonts.
 
 
 
-### 4 Add Fast Image for custom image component 
+### 4. Add Fast Image for custom image component 
 ```javascript
 yarn add react-native-fast-image
 ```
 **Article** - https://medium.com/@Bigscal-Technologies/how-to-load-images-quickly-with-react-native-faster-image-f7856cb5ebcd
 
 
-### 5 Some Useful dependencies-
+### 5. Some Useful dependencies-
 
 ```javascript
 yarn add react-native-animatable @react-native-async-storage/async-storage axios moment moment-timezone lodash
@@ -54,7 +54,7 @@ yarn add react-native-animatable @react-native-async-storage/async-storage axios
 yarn add -D @types/lodash
 ```
 
-### 6 SVG installation
+### 6. SVG installation
 
     yarn add react-native-svg
     yarn add -D react-native-svg-transformer
@@ -89,11 +89,44 @@ declare module "*.svg" {
 }
 ```
 
-### 7 Optimized Lottie Component
+### 7. Optimized Lottie Component
 
     yarn add lottie-react-native
 	
 then run pod install --repo-update if any error with ios
 Use Custom Component For better performance created under component folder.
 
+
+### 8. React Native Path Aliasing
+    yarn add --dev babel-plugin-module-resolver
+
+Update `babel.config.json`
+```javascript
+ plugins: [
+    [
+      'module-resolver',
+      {
+        extensions: ['.ios.js', '.android.js', '.ios.jsx', '.android.jsx', '.js', '.jsx', '.json', '.ts', '.tsx'],
+        root: ['.'],
+        alias: {
+          // '@assets': './src/assets',
+          // '@components': './src/components',
+          "@app": "./src",
+        },
+      },
+    ],
+  ],
+```
+Update `tsconfig.json`
+
+```javascript
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": [
+        "src/*"
+      ]
+    },
+  }
+```
 

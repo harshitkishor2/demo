@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, Text } from "react-native";
-import { FontConst, LoginSvg, LottieConst, } from "./assets";
-import { Container, Lottie } from "./components";
-import ShakeText from "./components/ShakerText";
-import RNBounceable from "./components/RNBounceable";
+import { Container } from "@app/components";
+import ShakeText from "@app/components/ShakerText";
+
+
 
 const App = () => {
   return (
