@@ -47,7 +47,7 @@ yarn add react-native-fast-image
 ### 5. Some Useful dependencies-
 
 ```javascript
-yarn add react-native-animatable @react-native-async-storage/async-storage axios moment moment-timezone lodash
+yarn add react-native-animatable @react-native-async-storage/async-storage axios moment moment-timezone lodash react-native-device-info
 ```
 
 ```javascript
