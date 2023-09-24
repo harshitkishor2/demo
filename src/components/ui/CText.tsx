@@ -1,23 +1,24 @@
 import React from 'react'
 
-import { DimensionValue, StyleSheet, Text, TextProps, TextStyle } from 'react-native'
+import { StyleSheet, Text, TextProps, TextStyle } from 'react-native'
 
-import Skeleton from './Skeleton';
-import { FontConst } from '../assets';
+import Skeleton from '../Skeleton';
+import { FontConst } from '@app/assets';
+import { DimensionValue, TextAlign, TextTransform } from '@app/Types';
 
-type textTransform = 'none' | 'uppercase' | 'lowercase' | 'capitalize'
-export type textAlign = 'auto' | 'left' | 'right' | 'center' | 'justify' | undefined;
+
+
 interface CTextProps {
     children?: React.ReactNode | string | undefined;
-    align?: textAlign;
+    align?: TextAlign;
     style?: TextStyle | TextStyle[] | undefined;
     loading?: boolean;
-    skHeight?: DimensionValue | undefined;
-    skWidth?: DimensionValue | undefined;
+    skHeight?: DimensionValue;
+    skWidth?: DimensionValue
     skBackground?: string;
     skBorderRadius?: number;
     numberOfLines?: number,
-    textTransform?: textTransform;
+    textTransform?: TextTransform;
     adjustsFontSizeToFit?: boolean;
     props?: TextProps
 }

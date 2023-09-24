@@ -1,5 +1,6 @@
+import { CustomStyle } from '@app/Types';
 import React from 'react';
-import { ActivityIndicator, StyleSheet, ViewStyle } from 'react-native';
+import { ActivityIndicator, StyleSheet } from 'react-native';
 import Container from './Container';
 
 type size = 'large' | 'small' | undefined;
@@ -8,14 +9,19 @@ interface Props {
     loading: boolean;
     size: size;
     color?: string;
-    style?: ViewStyle;
+    style?: CustomStyle
     backgroundColor?: string
 }
 
 const SimpleLoader = ({ loading, size, style, color, backgroundColor }: Props) => {
     if (loading) {
         return (
-            <Container style={[styles.loader, style]} backgroundColor={backgroundColor} >
+            <Container
+                style={StyleSheet.flatten([
+                    [styles.loader, style,]
+                ])}
+                backgroundColor={backgroundColor}
+            >
                 <ActivityIndicator size={size} color={color} />
             </Container>
         )

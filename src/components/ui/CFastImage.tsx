@@ -1,8 +1,9 @@
 import React from "react";
 import { StyleProp, StyleSheet } from "react-native";
 import FastImage, { FastImageProps, ImageStyle } from "react-native-fast-image";
-import { ImageConst } from "../assets";
-import Skeleton from "./Skeleton";
+import Skeleton from "../Skeleton";
+import { ImageConst } from "@app/assets";
+
 
 interface CFastImageProps extends FastImageProps {
     source: FastImageProps['source'];

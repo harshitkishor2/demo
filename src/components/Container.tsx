@@ -1,13 +1,14 @@
 import { SafeAreaView, StyleSheet, View, ViewStyle } from 'react-native'
 import React, { FC, ReactNode } from 'react'
+import { CustomStyle, DimensionValue } from '@app/Types'
 
 interface Props {
     useSafeArea: boolean,
     children: ReactNode,
     backgroundColor: string,
-    padding: number,
-    margin: number,
-    style?: ViewStyle
+    padding: DimensionValue,
+    margin: DimensionValue,
+    style?: CustomStyle
 }
 const Container = ({
     useSafeArea,
@@ -40,6 +41,8 @@ Container.defaultProps = {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center"
     }
 })

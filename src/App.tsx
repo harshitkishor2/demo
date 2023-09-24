@@ -1,17 +1,12 @@
 import React from "react";
 import { StyleSheet, Text } from "react-native";
-import { Container } from "@app/components";
-import ShakeText from "@app/components/ShakerText";
+import { AnimatedText, AnimatedView, CText, Container, Row } from "@app/components";
 
 
 
 const App = () => {
   return (
-    <Container >
-
-      <ShakeText>
-        Hellooooooooo
-      </ShakeText>
+    <Container  >
 
     </Container>
   );

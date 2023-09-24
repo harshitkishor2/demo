@@ -1,6 +1,6 @@
+import { ImageConst } from "@app/assets";
 import React from "react";
 import { Image, ImageProps, ImageSourcePropType, ImageStyle, StyleProp, StyleSheet } from "react-native";
-import { ImageConst } from "../assets";
 
 interface CImageProps extends ImageProps {
     source: ImageSourcePropType;
