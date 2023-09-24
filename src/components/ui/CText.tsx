@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         fontFamily: FontConst.Handlee.regular,
         color: "black",
         fontWeight: 'normal',
-        fontSize: 12
+        fontSize: 15
     }
 });
 

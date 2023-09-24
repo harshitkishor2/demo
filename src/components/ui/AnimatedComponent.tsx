@@ -1,6 +1,6 @@
 import { Animation, CustomStyle, Direction, Easing } from "@app/Types";
 import React, { ReactNode } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, TextStyle } from "react-native";
 import * as Animatable from 'react-native-animatable';
 
 type AnimatedViewProps = {
@@ -9,7 +9,7 @@ type AnimatedViewProps = {
     direction: Direction
     iterationCount?: number | 'infinite'
     children: ReactNode | ReactNode[] | undefined,
-    style?: CustomStyle,
+    style?: CustomStyle | TextStyle,
 }
 
 export const AnimatedView = ({
