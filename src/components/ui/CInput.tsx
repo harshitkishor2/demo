@@ -100,11 +100,10 @@ const CInput = ({
             {leftIcon ? <TextInputIcon iconComponent={leftIcon} onPress={onLeftIconPress} /> : null}
             <TextInput
                 autoCapitalize="none"
-                style={{
-                    flex: 1,
-                    paddingHorizontal: 10,
-                    textAlignVertical: multiline ? 'top' : 'center',
-                }}
+                style={[
+                    { flex: 1, paddingHorizontal: 10, },
+                    multiline && { height: 100, textAlignVertical: 'top' },
+                ]}
                 multiline={multiline}
                 numberOfLines={multiline ? 5 : 1}
                 value={value}

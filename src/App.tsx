@@ -3,6 +3,7 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { ImageConst } from "./assets";
 import FastImage from "react-native-fast-image";
+import AnimatedInput from "./components/ui/AnimatedInput";
 
 
 const App = () => {
@@ -10,29 +11,9 @@ const App = () => {
     <Container style={{
       paddingHorizontal: 10,
       justifyContent: "center",
-    }}  >
+    }} >
       <KeyboardAvoidView>
         <CScrollView>
-          <CFastImage
-            source={ImageConst.PERSON}
-            size={150}
-            resizeMode={FastImage.resizeMode.cover}
-          />
-          <CFastImage
-            source={ImageConst.PERSON}
-            size={150}
-            resizeMode={FastImage.resizeMode.cover}
-          />
-          <CFastImage
-            source={ImageConst.PERSON}
-            size={150}
-            resizeMode={FastImage.resizeMode.cover}
-          />
-          <CFastImage
-            source={ImageConst.PERSON}
-            size={150}
-            resizeMode={FastImage.resizeMode.cover}
-          />
           <CFastImage
             source={ImageConst.PERSON}
             size={150}
@@ -69,7 +50,10 @@ const App = () => {
             placeholder="Enter your name"
           />
 
+          <AnimatedInput placeholder={'Hello Mr india'} value="" />
+
           <SubmitButton label="Submit" onPress={() => console.log("Submit clicked")} />
+
         </CScrollView>
       </KeyboardAvoidView>
     </Container>
