@@ -91,12 +91,14 @@ const CInput = ({
     }
 
     const renderInput = () => {
-        return <View style={StyleSheet.flatten(
-            [styles.inputContainer, {
+        return <View style={StyleSheet.flatten([
+            styles.inputContainer, {
                 borderWidth: isUnderLine ? 0 : 1,
                 borderBottomWidth: 1
-            }, inputContainerStyle]
-        )}>
+            },
+            multiline && { height: 100 },
+            inputContainerStyle
+        ])}>
             {leftIcon ? <TextInputIcon iconComponent={leftIcon} onPress={onLeftIconPress} /> : null}
             <TextInput
                 autoCapitalize="none"

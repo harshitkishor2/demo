@@ -48,8 +48,8 @@ const App = () => {
             lable={'Name'}
             error={"Error text"}
             placeholder="Enter your name"
+            multiline
           />
-
           <AnimatedInput placeholder={'Hello Mr india'} value="" />
 
           <SubmitButton label="Submit" onPress={() => console.log("Submit clicked")} />
