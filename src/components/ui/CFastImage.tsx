@@ -12,6 +12,7 @@ interface CFastImageProps extends FastImageProps {
     height?: number
     width?: number,
     loading: boolean
+    isAvatar: boolean
 }
 const CFastImage = ({
     source,
@@ -20,6 +21,7 @@ const CFastImage = ({
     height,
     width,
     loading,
+    isAvatar,
     ...rest
 }: CFastImageProps) => {
 
@@ -37,15 +39,13 @@ const CFastImage = ({
             defaultSource={ImageConst.PERSON}
             source={source}
             style={
-                StyleSheet.flatten([
-                    style,
-                    {
-                        height: height ?? size,
-                        width: width ?? size
-                    }
+                StyleSheet.flatten([{
+                    height: height ?? size,
+                    width: width ?? size,
+                    borderRadius: (size && isAvatar) ? size / 2 : 0,
+                }, style
                 ])
             }
-
             {...rest}
         />
     );
@@ -56,6 +56,7 @@ export default CFastImage;
 CFastImage.defaultProps = {
     size: 50,
     loading: false,
+    isAvatar: false
 };
 
 {/* 
