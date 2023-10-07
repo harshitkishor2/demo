@@ -1,4 +1,5 @@
 import { Animation, CustomStyle, Direction, Easing } from "@app/Types";
+import { duration } from "moment";
 import React, { ReactNode } from "react";
 import { StyleSheet, TextStyle } from "react-native";
 import * as Animatable from 'react-native-animatable';
@@ -10,6 +11,8 @@ type AnimatedViewProps = {
     iterationCount?: number | 'infinite'
     children: ReactNode | ReactNode[] | undefined,
     style?: CustomStyle | TextStyle,
+    duration?: number;
+    delay?: number;
 }
 
 export const AnimatedView = ({
@@ -19,6 +22,8 @@ export const AnimatedView = ({
     iterationCount,
     children,
     style,
+    duration,
+    delay
 }: AnimatedViewProps) => {
     return (
         <Animatable.View
@@ -26,9 +31,12 @@ export const AnimatedView = ({
             iterationCount={iterationCount}
             direction={direction}
             animation={animation}
+            duration={duration}
+            delay={delay}
             style={StyleSheet.flatten([
                 style
             ])}
+            useNativeDriver={true}
         >
             {children}
         </Animatable.View>
