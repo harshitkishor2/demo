@@ -130,3 +130,6 @@ Update `tsconfig.json`
   }
 ```
 
+
+### 9. Expo integration for using custom expo mudule
+    npx install-expo-modules@latest

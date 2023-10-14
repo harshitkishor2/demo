@@ -6,8 +6,8 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import FontAwesome5Pro from 'react-native-vector-icons/FontAwesome5Pro';
+// import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+// import FontAwesome5Pro from 'react-native-vector-icons/FontAwesome5Pro';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import Foundation from 'react-native-vector-icons/Foundation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -66,7 +66,7 @@ const CIcon = (props: IconProps): JSX.Element => {
             break;
 
         case IconType.FontAwesome5:
-            Element = FontAwesome5;
+            // Element = FontAwesome5;
             break;
 
         case IconType.FontAwesome:
@@ -74,7 +74,7 @@ const CIcon = (props: IconProps): JSX.Element => {
             break;
 
         case IconType.FontAwesome5Brands:
-            Element = FontAwesome5Pro;
+            // Element = FontAwesome5Pro;
             break;
 
         case IconType.Fontisto:
