@@ -310,4 +310,48 @@ touch "${PROJECT_DIR}/../node_modules/react-native-config/ios/ReactNativeConfig/
 
 
 
+### 11. Generating Signed APK
+
+- Generating a signing key
+You can generate a private signing key using keytool.
+
+```javascript
+keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
+```
+This command prompts you for passwords for the keystore and key, and to provide the Distinguished Name fields for your key. It then generates the keystore as a file called my-release-key.keystore. Replace 'my-release-key' with your key name and 'my-key-alias' with your key alias.
+- Place the my-release-key.keystore file under the android/app directory in your project folder
+
+- Inside gradle.properties add these lines-
+```java
+MYAPP_RELEASE_STORE_FILE=my-release-key.keystore
+MYAPP_RELEASE_KEY_ALIAS=my-key-alias
+MYAPP_RELEASE_STORE_PASSWORD=*****
+MYAPP_RELEASE_KEY_PASSWORD=*****
+```
+
+- Edit the file android/app/build.gradle in your project folder and add the signing config,
+```java
+...
+android {
+    ...
+    defaultConfig { ... }
+    signingConfigs {
+        release {
+            if (project.hasProperty('MYAPP_RELEASE_STORE_FILE')) {
+                storeFile file(MYAPP_RELEASE_STORE_FILE)
+                storePassword MYAPP_RELEASE_STORE_PASSWORD
+                keyAlias MYAPP_RELEASE_KEY_ALIAS
+                keyPassword MYAPP_RELEASE_KEY_PASSWORD
+            }
+        }
+    }
+    buildTypes {
+        release {
+            ...
+            signingConfig signingConfigs.release
+        }
+    }
+}
+...
+```
 

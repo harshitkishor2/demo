@@ -32,6 +32,7 @@ local.properties
 *.hprof
 .cxx/
 *.keystore
+*.jks
 !debug.keystore
 
 # node.js
@@ -70,7 +71,5 @@ yarn-error.log
 dist/
 web-build/
 
-.env
-.env.development
-.env.staging
-.env.production
+.env*
+!.env.example
