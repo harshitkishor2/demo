@@ -1,7 +1,6 @@
 import { CustomStyle } from '@app/Types';
 import React from 'react';
-import { ActivityIndicator, StyleSheet } from 'react-native';
-import Container from './Container';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
 type size = 'large' | 'small' | undefined;
 
@@ -10,20 +9,23 @@ interface Props {
     size: size;
     color?: string;
     style?: CustomStyle
-    backgroundColor?: string
+    backgroundColor?: string,
+    isCenter?: boolean
 }
 
-const SimpleLoader = ({ loading, size, style, color, backgroundColor }: Props) => {
+const SimpleLoader = ({ loading, size, style, color, backgroundColor = '#fff', isCenter }: Props) => {
     if (loading) {
         return (
-            <Container
-                style={StyleSheet.flatten([
-                    [styles.loader, style,]
-                ])}
-                backgroundColor={backgroundColor}
+            <View
+                style={[
+                    StyleSheet.absoluteFill,
+                    isCenter ? styles.loader : null,
+                    { backgroundColor },
+                    style
+                ]}
             >
                 <ActivityIndicator size={size} color={color} />
-            </Container>
+            </View>
         )
     } else {
         return null
@@ -40,11 +42,6 @@ export default SimpleLoader
 
 const styles = StyleSheet.create({
     loader: {
-        position: "absolute",
-        top: 0,
-        right: 0,
-        left: 0,
-        bottom: 0,
         justifyContent: "center",
         alignItems: "center",
         zIndex: 1,

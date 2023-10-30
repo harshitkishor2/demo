@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Animated, ScrollView, StyleSheet, TextInput, TextInputProps, View } from 'react-native';
-
+import { Animated, StyleSheet, TextInput, TextInputProps, View } from 'react-native';
 
 interface AnimatedInputProps extends TextInputProps {
     placeholder: string
@@ -10,12 +9,13 @@ interface AnimatedInputProps extends TextInputProps {
 }
 
 const AnimatedInput = ({ value, onChangeText, placeholder, multiline }: AnimatedInputProps) => {
-    const [inputHeight, setHeight] = useState(0);
     const [placeholderWidth, setWidth] = useState(0);
     const animation = useRef(new Animated.Value(0)).current;
+    const InputHeight = multiline ? 100 : 50
+
     const translateY = animation.interpolate({
         inputRange: [0, 1],
-        outputRange: [0, -inputHeight / 2],
+        outputRange: [0, -InputHeight / 2],
     });
     const translateX = animation.interpolate({
         inputRange: [0, 1],
@@ -39,25 +39,32 @@ const AnimatedInput = ({ value, onChangeText, placeholder, multiline }: Animated
 
     return (
         <View
-            style={styles.inputContainer}
-            onLayout={e => !inputHeight && setHeight(e.nativeEvent.layout.height)}>
-            <View style={{ height: inputHeight, ...styles.placeholderContainer }}>
+            style={StyleSheet.flatten([
+                styles.inputContainer,
+                { height: InputHeight }
+            ])}
+        >
+            <View style={StyleSheet.flatten([
+                styles.placeholderContainer,
+                { height: InputHeight, },
+            ])}>
                 <Animated.Text
-                    style={[
+                    style={StyleSheet.flatten([
                         styles.placeholder,
                         { transform: [{ translateY }, { translateX }, { scale }] },
-                    ]}
+                    ])}
                     onTextLayout={e =>
                         !placeholderWidth && setWidth(e.nativeEvent.lines[0]?.width || 0)
-                    }>
+                    }
+                >
                     {placeholder}
                 </Animated.Text>
             </View>
             <TextInput
-                style={[
+                style={StyleSheet.flatten([
                     styles.input,
                     multiline && { height: 100, textAlignVertical: 'top' },
-                ]}
+                ])}
                 // value={value}
                 onFocus={onFocus}
                 onBlur={onBlur}
@@ -75,6 +82,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 5,
         borderColor: '#999',
+        justifyContent: "center",
     },
     input: {
         paddingHorizontal: 10,
@@ -92,6 +100,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 5,
         backgroundColor: '#fff',
         color: '#999',
+        zIndex: 99
     },
 });
 

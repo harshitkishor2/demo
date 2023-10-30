@@ -1,7 +1,7 @@
-import { KeyboardTypeOptions, Pressable, StyleSheet, Text, TextInput, TextInputProps, TextStyle, View, ViewStyle } from "react-native";
-import React, { ReactNode } from "react";
-import { AnimatedText } from "./AnimatedComponent";
 import { CustomStyle } from "@app/Types";
+import React, { ReactNode } from "react";
+import { Pressable, StyleSheet, Text, TextInput, TextInputProps, View } from "react-native";
+import { AnimatedText } from "./AnimatedComponent";
 
 type Mode = 'outlined' | 'underline'
 const Height = 40

@@ -34,6 +34,7 @@ const CScrollView = ({
                     }
                 }}
                 scrollEventThrottle={0.1}
+                keyboardShouldPersistTaps='handled'
                 ref={scrollRef}
                 contentContainerStyle={{
                     flexGrow: 1,
@@ -42,7 +43,7 @@ const CScrollView = ({
                 style={{
                     flex: 1
                 }}
-                scrollEnabled={isScrollable}
+                // scrollEnabled={isScrollable}
                 onContentSizeChange={(width, height) => {
                     if (height > DeviceInfo.WindowHeight) {
                         setIsScrollable(true)

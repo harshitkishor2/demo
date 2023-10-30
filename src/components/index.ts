@@ -1,8 +1,10 @@
 import CollapseScrollView from './CollapseScrollView'
 import Container from "./Container"
 import Lottie from "./Lottie"
+import SimpleLoader from './SimpleLoader'
 import Skeleton from "./Skeleton"
 import { AnimatedText, AnimatedView } from './ui/AnimatedComponent'
+import AnimatedInput from './ui/AnimatedInput'
 import CFastImage from "./ui/CFastImage"
 import CIcon, { IconType } from "./ui/CIcon"
 import CImage from "./ui/CImage"
@@ -18,9 +20,9 @@ import SubmitButton from "./ui/SubmitButton"
 
 
 export {
-    AnimatedText, AnimatedView, CFastImage, CIcon,
+    AnimatedInput, AnimatedText, AnimatedView, CFastImage, CIcon,
     CImage, CInput, CScrollView, CText, CollapseScrollView,
     Condition, Container, IconType, KeyboardAvoidView, Lottie,
-    Row, Skeleton, Spacer, SubmitButton
+    Row, SimpleLoader, Skeleton, Spacer, SubmitButton
 }
 

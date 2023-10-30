@@ -317,6 +317,10 @@ You can generate a private signing key using keytool.
 
 ```javascript
 keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
+
+// For SHA Key
+keytool -list -v -keystore ./app/debug.keystore -alias androiddebugkey -storepass android -keypass android
+
 ```
 This command prompts you for passwords for the keystore and key, and to provide the Distinguished Name fields for your key. It then generates the keystore as a file called my-release-key.keystore. Replace 'my-release-key' with your key name and 'my-key-alias' with your key alias.
 - Place the my-release-key.keystore file under the android/app directory in your project folder
