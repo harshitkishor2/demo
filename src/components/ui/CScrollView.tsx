@@ -33,6 +33,7 @@ const CScrollView = ({
                         setIsMove2TopEnable(false)
                     }
                 }}
+                scrollEventThrottle={0.1}
                 ref={scrollRef}
                 contentContainerStyle={{
                     flexGrow: 1,

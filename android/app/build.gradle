@@ -1,7 +1,18 @@
 apply plugin: "com.android.application"
 apply plugin: "com.facebook.react"
 
+// For react native vector icons
 apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
+
+// For react native dotenv
+project.ext.envConfigFiles = [
+   prod: ".env.production",
+   dev: ".env.development",
+   stg: ".env.staging",
+]
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle" // <- add this line
+
+
 /**
  * This is the configuration block to customize your React Native Android app.
  * By default you don't need to apply any configuration, just uncomment the lines you need.
@@ -85,7 +96,9 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
+        resValue "string", "build_config_package", "com.myproject"
+        setProperty("archivesBaseName", "App_Name_" + versionName +"($versionCode)" ) // For changing archive name
     }
     signingConfigs {
         debug {
@@ -98,6 +111,7 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            matchingFallbacks = ['debug', 'release'] // <- add this line
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
@@ -107,6 +121,23 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
+
+    // add this block
+    flavorDimensions "default"
+    productFlavors {
+        prod {
+
+        }
+        stg {
+            applicationIdSuffix ".stg"
+        }
+        dev {
+            applicationIdSuffix ".dev"
+        }
+    }
+    // ---
+
+    
 }
 
 dependencies {

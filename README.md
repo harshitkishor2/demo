@@ -133,3 +133,181 @@ Update `tsconfig.json`
 
 ### 9. Expo integration for using custom expo mudule
     npx install-expo-modules@latest
+
+
+
+### 10. Multiple Environment and flavors in React native
+Ref -
+1. https://dev.to/leon_arantes/react-native-multiple-environments-setup-schemaflavors-3l7p
+2. https://github.com/luggit/react-native-config#extra-step-for-android
+3. https://www.youtube.com/watch?v=TvBm7UZNyy8&ab_channel=SobanSpeaks 
+
+
+    yarn add react-native-config
+	
+Create  4 files on root of project and put then in gitignore->
+- .env
+- .env.development
+- .env.staging
+- .env.production
+
+**TypeScript declaration for your .env file ->**
+
+If you want to get autocompletion and typesafety for your .env files. Create a file named **react-native-config.d.ts** in the same directory where you put your type declarations, and add the following contents:
+```javascript
+declare module 'react-native-config' {
+    export interface NativeConfig {
+        // default
+        APPLICATION_ID?: string;
+        BUILD_TYPE?: string;
+        DEBUG?: boolean;
+        FLAVOR?: string;
+        IS_HERMES_ENABLED?: boolean;
+        IS_NEW_ARCHITECTURE_ENABLED?: boolean;
+        VERSION_CODE?: number
+        VERSION_NAME?: string
+
+        // From env
+        API_URL?: string;
+        ENVIRONMENT?: string;
+    }
+
+    export const Config: NativeConfig
+    export default Config
+}
+```
+
+
+**Android Setup ->**
+
+Add these code lines to **android/app/build.gradle** to apply plugin
+
+```java
+    // For react native dotenv
+    project.ext.envConfigFiles = [
+       prod: ".env.production",
+       dev: ".env.development",
+       stg: ".env.staging",
+    ]
+    apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle" 
+    
+```
+
+Adding Product Flavor inside android section after buildTypes.
+```java
+ android {    
+        // add this block
+        flavorDimensions "default"
+        productFlavors {
+            prod {
+
+            }
+            stg {
+                applicationIdSuffix ".stg"
+            }
+            dev {
+                applicationIdSuffix ".dev"
+            }
+        }
+       // ---
+    ..................
+```
+	
+Also add matchingFallbacks in buildTypes as shown below:
+
+```java
+      buildTypes {
+            debug {
+                signingConfig signingConfigs.debug
+                matchingFallbacks = ['debug', 'release'] // <- add this line
+            }
+        -----
+```
+```java
+defaultConfig {
+    ...
+    resValue "string", "build_config_package", "YOUR_PACKAGE_NAME_IN_ANDROIDMANIFEST_XML"  // <- add this line
+    setProperty("archivesBaseName", "App_Name_" + versionName +"($versionCode)" ) // For changing archive name
+
+}
+```
+**Android Change App name and App Icon->**
+
+- Just Duplicate the **android/app/main** folder and rename it stg and dev and remove all folders just keep folder contains string.xml.
+- To change the app icons, just add it inside the specific mipmap of the build dev, stg or main(prod).
+
+- To change app name, open file and rename-
+android/app/src/main/res/values/strings.xml
+android/app/src/dev/res/values/strings.xml
+android/app/src/stg/res/values/strings.xml
+
+**IOS Setup ->**
+
+  -  Update pod file and add these lines of code
+
+```swift
+pod 'react-native-config', :path => '../node_modules/react-native-config'
+# For extensions without React dependencies
+pod 'react-native-config/Extension', :path => '../node_modules/react-native-config'
+  
+#Replace myProject with your project name
+project 'myProject',
+'Debug' => :debug,
+'Release' => :release,
+'Dev.Debug' => :debug,
+'Dev.Release' => :release,
+'Stg.Debug' => :debug,
+'Stg.Release' => :release
+...
+...
+flipper_config = ENV['NO_FLIPPER'] == "1" ? FlipperConfiguration.disabled : FlipperConfiguration.enabled(['Debug', 'Dev.Debug','Stg.Debug','Release','Dev.Release','Stg.Release'],{'Flipper' => '0.182.0'}) 
+
+```
+- Then create new configuration here with the same name inside pod file mentioned -
+Project->Info->Cofigurations- Duplicate Debug/Release configurations
+- Then change display name from here - 
+Target-> Build Settings-> Packaging-> Product Name and Product Bundle Identifier
+
+- Then Update info.plist as->
+
+```swift
+<key>CFBundleDisplayName</key>
+<string>$(PRODUCT_NAME)</string>
+```
+- Then, In Xcode, select Product>Scheme>New Scheme. Select the project in dropdown and enter scheme name. And click ok to create the same. Make sure shared option is checked.
+- In Xcode, select Product>Scheme>Edit Scheme.
+- Create 2 Pre-actions inside Build and Run. To create env file inside ios folder and use the same. Select project in provide build settings drop down.Add below scripts and close.
+
+```swift
+# Type a script or drag a script file from your workspace to insert its path.
+cp "${PROJECT_DIR}/../.env.staging" "${PROJECT_DIR}/../.env"
+echo ".env.staging" > /tmp/envfile
+touch "${PROJECT_DIR}/../node_modules/react-native-config/ios/ReactNativeConfig/BuildDotenvConfig.rb"
+
+```
+
+
+**Update scripts in  package.json ->**
+
+```javascript
+    "android:dev": "react-native run-android --mode=devdebug --appIdSuffix 'dev'",
+    "android:dev:release": "react-native run-android --mode=devrelease --appIdSuffix 'dev'",
+    "android:dev:apk": "cd android && ./gradlew assembleDevRelease && cd ..",
+    "android:dev:aab": "cd android && ./gradlew bundleDevRelease && cd ..",
+    "android:stg": "react-native run-android --mode=stgdebug --appIdSuffix 'stg'",
+    "android:stg:release": "react-native run-android --mode=stgrelease --appIdSuffix 'stg'",
+    "android:stg:apk": "cd android && ./gradlew assembleStgRelease && cd ..",
+    "android:stg:aab": "cd android && ./gradlew bundleStgRelease && cd ..",
+    "android:prod": "react-native run-android --mode=proddebug",
+    "android:prod:release": "react-native run-android --mode=prodrelease",
+    "android:prod:apk": "cd android && ./gradlew assembleProdRelease && cd ..",
+    "android:prod:aab": "cd android && ./gradlew bundleProdRelease && cd ..",
+    "ios:dev": "react-native run-ios --mode=Dev.Debug --scheme \"myProject(Dev)\"",
+    "ios:stg": "react-native run-ios --mode=Stg.Debug --scheme \"myProject(Stg)\"",
+    "ios:prod": "react-native run-ios --mode=Debug --scheme \"myProject\"",
+```
+
+
+
+
+
