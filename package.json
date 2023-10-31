@@ -25,6 +25,7 @@
     "android:prod:aab": "cd android && ./gradlew bundleProdRelease && cd ..",
     "android:sha": "cd android && ./gradlew signingReport && cd ..",
     "android:open": "open ./android/app/build/outputs/",
+    "app-icon": "npx rn-ml appicon -s src/assets/appIcon/app.png",
     "android:bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/",
     "tcp": "adb reverse tcp:8081 tcp:8081",
     "pod": "cd ios && pod install && cd ..",
