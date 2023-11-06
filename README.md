@@ -359,3 +359,17 @@ android {
 ...
 ```
 
+
+### 12. Redux, Persist, ContextApi with AsyncStorage
+
+```javascript
+yarn add @reduxjs/toolkit react-redux redux-logger redux-persist react-native-mmkv
+```
+```javascript
+yarn add -D @types/redux-logger react-native-flipper react-native-mmkv-flipper-plugin
+```
+
+- react-native-flipper used for debugging our app with Flipper.
+Rest of code you can find inside **store** folder.
+
+### 13.  

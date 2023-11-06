@@ -7,3 +7,10 @@ export const AppConst = {
 export const ApiConst = {
 
 }
+
+export const LoadingStatus = Object.freeze({
+    IDLE: "IDLE",
+    PENDING: 'PENDING',
+    FULLFILLED: 'FULLFILLED',
+    REJECTED: 'REJECTED'
+})
